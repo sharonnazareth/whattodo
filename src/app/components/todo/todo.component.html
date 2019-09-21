@@ -1,0 +1,37 @@
+<section class="todoapp">
+  <header class="header mt-5">
+    <div class="row">
+      <div class="col-6 offset-3">
+        <input class="form-control" placeholder="What do I want to do?" autofocus="" [(ngModel)]="newTodo.title"
+          (keyup.enter)="addTodo()">
+        <div class="mt-2 float-right">
+          <!-- <input type="file" ng2FileSelect [uploader]="uploader"> -->
+        </div>
+      </div>
+    </div>
+  </header>
+  <section *ngIf="todos.length > 0" class="row mt-4">
+    <div class="col-3" *ngFor="let todo of todos">
+      <div class="card mt-3" [class.completed]="todo.complete">
+        <div class="card-body">
+          <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
+          <h5 class="card-title strikethrough">{{todo.title}}</h5>
+          <div *ngIf="todo.isEdit" class="mb-3">
+            <input class="form-control" autofocus="" [(ngModel)]="todo.title" (keyup.enter)="save(todo)">
+            <button class="btn btn-primary btn-sm my-2" (click)="save(todo)" title="Save">
+              Save
+            </button>
+          </div>
+          <div class="float-right">
+            <button class="btn btn-default btn-sm mr-2" (click)="onEdit(todo)" title="Edit">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" type="button" (click)="removeTodo(todo)" title="Delete">
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

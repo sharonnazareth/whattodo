@@ -1,5 +1,8 @@
 # WhatToDo: Google keep clone app
 
+![Demo GIF](https://github.com/sharonnazareth/whattodo/blob/master/src/assets/todo.gif)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
 
 ## Development server

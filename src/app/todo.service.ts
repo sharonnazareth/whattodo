@@ -33,14 +33,11 @@ export class TodoService {
       todo.id = ++this.lastId;
     }
     this.todos.push(todo);
-    this.syncNotes();
-
     return this;
   }
 
   deleteTodoById(id: number): TodoService {
-    this.todos = this.getTodos().filter(todo => todo.id !== id);
-    this.syncNotes();
+    this.todos = this.todos.filter(todo => todo.id !== id);
     return this;
   }
 
@@ -54,13 +51,11 @@ export class TodoService {
   }
 
   getAllTodos(): Todo[] {
-    return this.getTodos();
+    return this.todos;
   }
 
   getTodoById(id: number): Todo {
-    return this.getTodos()
-      .filter(todo => todo.id === id)
-      .pop();
+    return this.todos.filter(todo => todo.id === id).pop();
   }
 
   toggleTodoComplete(todo: Todo) {
